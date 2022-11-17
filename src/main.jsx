@@ -32,6 +32,7 @@ const App = () => {
         <Post numero={2}></Post> 
         <Post numero={3}></Post>
         <Post numero={4}></Post>
+        <Post numero={5}></Post>
                                     
     </div>
 }
