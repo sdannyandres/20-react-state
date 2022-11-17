@@ -1,24 +1,30 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client'
-
 const root = document.getElementById('root')
 const rootReat =createRoot(root)
 
-const Likes = (props) => {
-    const [likes, setLikes] = useState(0)
-    console.log('render',likes)
+const Post = ({numero}) => {
+    const [data, setData] = useState(null)
+    const [c, setC] = useState(0)    
+    console.log("render")
+    usseEffect (() => {
+        console.log("acceso a la base de datos")
+        fetch ('https://jsonplaceholder.typicode.com/posts/${numero}')
+        .then(response => response.json())
+        .then(data => setData(data))
+    }, [])
     
-    const increment = () => {
-        setLikes  (likes + 1);
-        console.log(likes)
+    if (!data) return <div>
+          cargando el post {numero}
+          <hr></hr>
+    </div>
+   return <div>
+    <button onClick={() => setC(c + 1)}>Sumar {c}</button>
+    post {numero}
+    {JSON.stringify(data)}
+    <hr></hr>
+   </div>
+   
 }
-
-   return <button onClick={() => increment ()}>Likes{likes}</button>
-
-}
-rootReat.render(
-  <div>
-    <Likes/>
-  </div>
-)
+ 
 
