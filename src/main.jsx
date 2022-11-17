@@ -8,7 +8,7 @@ const Post = ({ numero }) => {
     const [c, setC] = useState(0)
     console.log("render")
     useEffect(() => {
-        console.log("acceso a la base de datos")
+        console.log("acceso a la base de datos", numero)
         fetch('https://jsonplaceholder.typicode.com/posts/${numero}')
             .then(response => response.json())
             .then(data => setData(data))
